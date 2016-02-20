@@ -14,7 +14,7 @@
 
 # TODO: change this to your project directory relative to your home directory
 #       (= $HOME)
-export PBS_O_WORKDIR=$HOME/path/to/your/project
+export PBS_O_WORKDIR=$HOME/proj1
 
 
 # TODO:
@@ -24,13 +24,19 @@ export PBS_O_WORKDIR=$HOME/path/to/your/project
 # Also: you should time each parameter setting multiple times and then average
 #       the results to achieve a smoother and more accurate analysis.
 MASTER_DEPTH=4
-EXE=$PBS_O_WORKDIR/nqueens
+# EXE=$PBS_O_WORKDIR/nqueens
+N=8
+
+for p in 6 12 24 48
+do
+    $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N $MASTER_DEPTH
+done
 
 # loop over number of processors (just an example, uncomment to use the loop)
 # for p in 2 4 8 12 16 24
 # do
-p=24 # (four sixcore processors => 24 processes total)
-N=8 # TODO: loop over N as well!
-OMPI_MCA_mpi_yield_when_idle=0 mpirun --hostfile $PBS_NODEFILE -np $p $EXE -t $N $MASTER_DEPTH
+#p=24 # (four sixcore processors => 24 processes total)
+#N=8 # TODO: loop over N as well!
+#OMPI_MCA_mpi_yield_when_idle=0 mpirun --hostfile $PBS_NODEFILE -np $p $EXE -t $N $MASTER_DEPTH
 # done
 
