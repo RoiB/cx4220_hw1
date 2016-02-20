@@ -23,10 +23,14 @@ export PBS_O_WORKDIR=$HOME/proj1
 # analyze the scalability behaviour of each parameter setting.
 # Also: you should time each parameter setting multiple times and then average
 #       the results to achieve a smoother and more accurate analysis.
-MASTER_DEPTH=4
-# EXE=$PBS_O_WORKDIR/nqueens
-N=8
+MPIRUN=/usr/lib64/openmpi/bin/mpirun
 
+# set the n-queens master-depth k
+MASTER_DEPTH=4
+# set size of the problem instance
+N=14
+
+# loop over number of processors (our 4 nodes job can run up to 48)
 for p in 6 12 24 48
 do
     $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N $MASTER_DEPTH
