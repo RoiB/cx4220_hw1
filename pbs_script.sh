@@ -9,7 +9,7 @@
 
 #PBS -q class
 #PBS -l nodes=8:sixcore
-#PBS -l walltime=01:00:00
+#PBS -l walltime=00:30:00
 #PBS -N cse6220-nqueens
 
 # TODO: change this to your project directory relative to your home directory
@@ -24,24 +24,24 @@ MPIRUN=/usr/lib64/openmpi/bin/mpirun
 # set size of the problem instance
 
 # loop over number of processors (our 4 nodes job can run up to 48)
-for p in 6 12 24 30 48
-do
-        for N in 8 10 13 20 30 40
-        do
-            $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 5
-        done
-done
+# for p in 6 12 24 30 48
+# do
+#         for N in 8 10 13 20 30 40
+#         do
+#             $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 5
+#         done
+# done
 # p=16
 # N=13
 # $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
         
-# for p in 6 12 24 48
-# do
-#     for N in 13 20
-#     do
-#         for K in 1 2 3 5 9 10
-#         do
-#             $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N $K
-#         done
-#     done
-# done
+for p in 12 24 30
+do
+    for N in 13 20
+    do
+        for K in 1 2 3 5 9 10
+        do
+            $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N $K
+        done
+    done
+done
