@@ -34,7 +34,7 @@ N=14
 # loop over number of processors (our 4 nodes job can run up to 48)
 for p in 6 12 24 48
 do
-    $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N $MASTER_DEPTH
+    $MPIRUN -np $p --hostfile $PBS_NODEFILE $PROGPATH -t $N $MASTER_DEPTH
 done
 
 # loop over number of processors (just an example, uncomment to use the loop)
