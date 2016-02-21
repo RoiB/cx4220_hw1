@@ -31,8 +31,8 @@ MPIRUN=/usr/lib64/openmpi/bin/mpirun
 #         $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
 #     done
 # done
-p = 4
-N = 8
+p=4
+N=8
 $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
         
 # for p in 6 12 24 48
