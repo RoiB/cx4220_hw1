@@ -31,7 +31,7 @@ MPIRUN=/usr/lib64/openmpi/bin/mpirun
 #         $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
 #     done
 # done
-p=24
+p=48
 N=30
 $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
         
