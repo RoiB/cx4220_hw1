@@ -14,7 +14,7 @@
 
 # TODO: change this to your project directory relative to your home directory
 #       (= $HOME)
-export PBS_O_WORKDIR= ~/proj1/cs4220_hw1
+export PBS_O_WORKDIR=$HOME/proj1/cs4220_hw1
 
 
 # TODO:
@@ -24,6 +24,7 @@ export PBS_O_WORKDIR= ~/proj1/cs4220_hw1
 # Also: you should time each parameter setting multiple times and then average
 #       the results to achieve a smoother and more accurate analysis.
 MPIRUN=/usr/lib64/openmpi/bin/mpirun
+PROGPATH=$HOME/proj1/cs4220_hw1/nqueens
 
 # set the n-queens master-depth k
 MASTER_DEPTH=4
