@@ -28,7 +28,7 @@ for p in 6 12
 do
         for N in 3 4 8 10 13 17
         do
-            $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
+            $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 3
         done
 done
 # p=16
