@@ -9,7 +9,7 @@
 
 #PBS -q class
 #PBS -l nodes=4:sixcore
-#PBS -l walltime=00:05:00
+#PBS -l walltime=00:10:00
 #PBS -N cse6220-nqueens
 
 # TODO: change this to your project directory relative to your home directory
