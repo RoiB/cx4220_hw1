@@ -24,7 +24,7 @@ cd PBS_O_WORKDIR=$HOME/proj1/cs4220_hw1
 # Also: you should time each parameter setting multiple times and then average
 #       the results to achieve a smoother and more accurate analysis.
 MPIRUN=/usr/lib64/openmpi/bin/mpirun
-PROGPATH=$HOME/proj1/cs4220_hw1/nqueens
+PROGPATH=./nqueens
 
 # set the n-queens master-depth k
 MASTER_DEPTH=4
