@@ -24,11 +24,11 @@ MPIRUN=/usr/lib64/openmpi/bin/mpirun
 # set size of the problem instance
 
 # loop over number of processors (our 4 nodes job can run up to 48)
-for p in 6 12 24 48
+for p in 6 12
 do
         for N in 3 4 8 10 13 17
         do
-            $MPIRUN -np 60 --hostfile $PBS_NODEFILE ./nqueens -t $N 4
+            $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
         done
 done
 # p=16
