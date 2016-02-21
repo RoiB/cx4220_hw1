@@ -9,7 +9,7 @@
 
 #PBS -q class
 #PBS -l nodes=8:sixcore
-#PBS -l walltime=00:30:00
+#PBS -l walltime=01:00:00
 #PBS -N cse6220-nqueens
 
 # TODO: change this to your project directory relative to your home directory
@@ -35,7 +35,7 @@ MPIRUN=/usr/lib64/openmpi/bin/mpirun
 # N=13
 # $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
 
-for N in 8 10 13 20 30
+for N in 8 10 13
 do
     $MPIRUN -np 30 --hostfile $PBS_NODEFILE ./nqueens -t $N 5
 done
