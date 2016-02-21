@@ -14,7 +14,7 @@
 
 # TODO: change this to your project directory relative to your home directory
 #       (= $HOME)
-cd $HOME/sp16-cse6220-prog1
+cd $HOME/prog1/cx4220_hw1
 
 # hardcode MPI path
 MPIRUN=/usr/lib64/openmpi/bin/mpirun
