@@ -14,7 +14,7 @@
 
 # TODO: change this to your project directory relative to your home directory
 #       (= $HOME)
-export PBS_O_WORKDIR=$HOME/proj1/cs4220_hw1
+cd PBS_O_WORKDIR=$HOME/proj1/cs4220_hw1
 
 
 # TODO:
