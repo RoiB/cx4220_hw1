@@ -20,14 +20,14 @@ cd $HOME/prog1/cx4220_hw1
 MPIRUN=/usr/lib64/openmpi/bin/mpirun
 
 # set the n-queens master-depth k
+
 # set size of the problem instance
 
 # loop over number of processors (our 4 nodes job can run up to 48)
 for p in 6 12 24 48
-    K = 4
     for N in 3 4 8 10 13 20 40 100
     do
-        $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N $K
+        $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
         
 for p in 6 12 24 48
     for N in 13 20
