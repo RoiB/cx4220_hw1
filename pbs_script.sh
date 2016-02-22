@@ -8,7 +8,7 @@
 # allocate 4 of the (24 total) sixcore nodes for up to 5 minutes
 
 #PBS -q class
-#PBS -l nodes=4:sixcore
+#PBS -l nodes=6:sixcore
 #PBS -l walltime=01:00:00
 #PBS -N cse6220-nqueens
 
@@ -35,9 +35,9 @@ MPIRUN=/usr/lib64/openmpi/bin/mpirun
 # N=13
 # $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
 
-for N in 10 13 15
+for p in 6 12 24 30
 do
-    $MPIRUN -np 16 --hostfile $PBS_NODEFILE ./nqueens -t $N 5
+    $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t 15 5
 done
         
 # for p in 12 24 30
