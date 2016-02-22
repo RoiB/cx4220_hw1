@@ -35,7 +35,7 @@ MPIRUN=/usr/lib64/openmpi/bin/mpirun
 # N=13
 # $MPIRUN -np $p --hostfile $PBS_NODEFILE ./nqueens -t $N 4
 
-for N in 8 9 10 11 12 13 15
+for N in 8 9 10 11 12 13
 do
     $MPIRUN -np 48 --hostfile $PBS_NODEFILE ./nqueens -t $N 5
 done
