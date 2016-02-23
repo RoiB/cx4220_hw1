@@ -59,11 +59,13 @@ void master_solution_func(std::vector<unsigned int>& solution) {
     MPI_Status status;
     unsigned int num;
     MPI_Recv(&num, 1, MPI_UNSIGNED, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
-    if (status.MPI_TAG != REQUESTTAG) {
+    if (status.MPI_TAG != REQUESTTAG) { //check if it's the workers' initial request
+    //receive solution from worker
       std::vector<unsigned int> sol(num);
       MPI_Recv(&(sol.front()), num, MPI_UNSIGNED, status.MPI_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
       SolutionStore::add_solution(sol);
     }
+    //send partial solution to worker
     MPI_Send(&(solution.front()), solution.capacity(), MPI_UNSIGNED, status.MPI_SOURCE, WORKTAG, MPI_COMM_WORLD);
 }
 
@@ -99,13 +101,13 @@ std::vector<unsigned int> master_main(unsigned int n, unsigned int k) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Status status;
     unsigned int num;
-    for (int rank = 1; rank < size; rank++) {
+    for (int rank = 1; rank < size; rank++) { //receive remaining solutions
       MPI_Recv(&num, 1, MPI_UNSIGNED, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
       std::vector<unsigned int> sol(num);
       MPI_Recv(&(sol.front()), num, MPI_UNSIGNED, status.MPI_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
       SolutionStore::add_solution(sol);
     }
-    for (int rank = 1; rank < size; rank++) {
+    for (int rank = 1; rank < size; rank++) { //terminate workers
       MPI_Send(&(pos.front()), n, MPI_UNSIGNED, rank, KILLTAG, MPI_COMM_WORLD);
     }
 
@@ -160,7 +162,7 @@ void worker_main() {
     while (1) {
       MPI_Recv(&(partial.front()), n, MPI_UNSIGNED, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
       if (status.MPI_TAG == KILLTAG)
-	return;
+	return; //terminate
       else {
 	// generate all  solutions and call the
 	// worker solution function
